@@ -1,21 +1,21 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
-class Counter {
+public class Counter {
 
     int mCounter;
     Thread mNotify;
 
-    Counter(Thread notify) {
+    public Counter(Thread notify) {
         mCounter = 0;
         mNotify = notify;
     }
 
-    synchronized void inc() {
+    public synchronized void inc() {
         mCounter++;
         System.out.println("Counter:" + mCounter);
     }
 
-    synchronized void dec() {
+    public synchronized void dec() {
         if (mCounter > 0) {
             mCounter--;
         }
@@ -26,7 +26,7 @@ class Counter {
         }
     }
 
-    synchronized void release() {
+    public synchronized void release() {
         try {
             System.out.println("Counter:wait");
             wait();
