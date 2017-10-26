@@ -1,7 +1,11 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
+import pl.edu.agh.macwozni.dmeshparallel.Mesh.Vertex;
+import pl.edu.agh.macwozni.dmeshparallel.Mesh.GraphDrawer;
+
 class Executor extends Thread {
 
+    @Override
     public synchronized void run() {
 
         Counter counter = new Counter(this);
@@ -16,7 +20,7 @@ class Executor extends Thread {
 
         //p2,p3
         P2 p2 = new P2(p1.mVertex, counter);
-        P3 p3 = new P3(p1.mVertex.mRight, counter);
+        P3 p3 = new P3(p1.mVertex.getRight(), counter);
         p2.start();
         p3.start();
 
@@ -24,8 +28,8 @@ class Executor extends Thread {
 
         //p5^2,p6^2
         P5 p5A = new P5(p2.mVertex, counter);
-        P5 p5B = new P5(p3.mVertex.mRight, counter);
-        P6 p6A = new P6(p2.mVertex.mRight, counter);
+        P5 p5B = new P5(p3.mVertex.getRight(), counter);
+        P6 p6A = new P6(p2.mVertex.getRight(), counter);
         P6 p6B = new P6(p3.mVertex, counter);
         p5A.start();
         p5B.start();

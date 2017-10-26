@@ -1,35 +1,45 @@
-package pl.edu.agh.macwozni.dmeshparallel;
+package pl.edu.agh.macwozni.dmeshparallel.Mesh;
 
-class Vertex {
-    //constructor
+public class Vertex {
 
-    Vertex(Vertex left, Vertex right, String lab) {
+    //label
+    String mLabel = null;
+    //links to adjacent elements
+    Vertex mLeft = null;
+    Vertex mRight = null;
+
+    //methods for adding links
+    public Vertex(Vertex left, Vertex right, String lab) {
         this.mLeft = left;
         this.mRight = right;
         this.mLabel = lab;
     }
     //empty constructor
 
-    Vertex() {
-        this.mLeft = null;
-        this.mRight = null;
+    public Vertex() {
     }
-    //label
-    String mLabel;
-    //links to adjacent elements
-    Vertex mLeft;
-    Vertex mRight;
-    //methods for adding links
 
-    void setLeft(Vertex left) {
+    public void setLeft(Vertex left) {
         mLeft = left;
     }
 
-    void setRight(Vertex right) {
+    public void setRight(Vertex right) {
         mRight = right;
     }
 
-    void setLabel(String lab) {
+    public void setLabel(String lab) {
         mLabel = lab;
+    }
+
+    public Vertex getLeft() {
+        return mLeft;
+    }
+
+    public Vertex getRight() {
+        return mRight;
+    }
+
+    public String getLabel() {
+        return mLabel;
     }
 }

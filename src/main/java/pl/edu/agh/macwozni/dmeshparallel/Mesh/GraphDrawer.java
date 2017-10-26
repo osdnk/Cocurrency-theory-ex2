@@ -1,12 +1,8 @@
-package pl.edu.agh.macwozni.dmeshparallel;
+package pl.edu.agh.macwozni.dmeshparallel.Mesh;
 
-class GraphDrawer {
+public class GraphDrawer {
 
-    GraphDrawer() {
-    }
-    //draw the graph
-
-    void draw(Vertex v) {
+    public void draw(Vertex v) {
         //go left
         while (v.mLeft != null) {
             v = v.mLeft;

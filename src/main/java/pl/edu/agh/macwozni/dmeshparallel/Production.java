@@ -1,5 +1,8 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
+import pl.edu.agh.macwozni.dmeshparallel.Mesh.Vertex;
+import pl.edu.agh.macwozni.dmeshparallel.Mesh.GraphDrawer;
+
 abstract class Production extends Thread {
 
     Production(Vertex Vert, Counter Count) {
@@ -52,8 +55,8 @@ class P2 extends Production {
 
     Vertex apply(Vertex t1) {
         System.out.println("p2");
-        Vertex t2 = new Vertex(t1, t1.mRight, "T2");
-        t1.mRight.setLeft(t2);
+        Vertex t2 = new Vertex(t1, t1.getRight(), "T2");
+        t1.getRight().setLeft(t2);
         t1.setRight(t2);
         return t1;
     }
@@ -67,8 +70,8 @@ class P3 extends Production {
 
     Vertex apply(Vertex t1) {
         System.out.println("p3");
-        Vertex t2 = new Vertex(t1.mLeft, t1, "T2");
-        t1.mLeft.setRight(t2);
+        Vertex t2 = new Vertex(t1.getLeft(), t1, "T2");
+        t1.getLeft().setRight(t2);
         t1.setLeft(t2);
         return t2;
     }
