@@ -23,8 +23,10 @@ public class Executor extends Thread {
         P1 p1 = new P1(s, counter);
         p1.start();
 
+        //start threads
         counter.release();
 
+        //wait for threads to finish
         try {
             p1.join();
         } catch (InterruptedException ex) {
@@ -37,8 +39,10 @@ public class Executor extends Thread {
         p2.start();
         p3.start();
 
+        //start threads
         counter.release();
 
+        //wait for threads to finish
         try {
             p2.join();
             p3.join();
@@ -56,8 +60,10 @@ public class Executor extends Thread {
         p6A.start();
         p6B.start();
 
+        //start threads
         counter.release();
 
+        //wait for threads to finish
         try {
             p5A.join();
             p5B.join();

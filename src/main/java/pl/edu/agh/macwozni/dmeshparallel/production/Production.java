@@ -13,9 +13,9 @@ abstract public class Production extends Thread {
     //productions counter
     Counter mCounter;
 
-    public Production(Vertex Vert, Counter Count) {
-        mVertex = Vert;
-        mCounter = Count;
+    public Production(Vertex vert, Counter count) {
+        mVertex = vert;
+        mCounter = count;
         mDrawer = new GraphDrawer();
     }
 
