@@ -6,10 +6,10 @@ class Executor extends Thread {
 
         Counter counter = new Counter(this);
         //axiom
-        Vertex S = new Vertex(null, null, "S");
+        Vertex s = new Vertex(null, null, "S");
 
         //p1 
-        P1 p1 = new P1(S, counter);
+        P1 p1 = new P1(s, counter);
         p1.start();
 
         counter.release();
@@ -23,21 +23,21 @@ class Executor extends Thread {
         counter.release();
 
         //p5^2,p6^2
-        P5 p5a = new P5(p2.mVertex, counter);
-        P5 p5b = new P5(p3.mVertex.mRight, counter);
-        P6 p6a = new P6(p2.mVertex.mRight, counter);
-        P6 p6b = new P6(p3.mVertex, counter);
-        p5a.start();
-        p5b.start();
-        p6a.start();
-        p6b.start();
+        P5 p5A = new P5(p2.mVertex, counter);
+        P5 p5B = new P5(p3.mVertex.mRight, counter);
+        P6 p6A = new P6(p2.mVertex.mRight, counter);
+        P6 p6B = new P6(p3.mVertex, counter);
+        p5A.start();
+        p5B.start();
+        p6A.start();
+        p6B.start();
 
         counter.release();
 
         //done
         System.out.println("done");
         GraphDrawer drawer = new GraphDrawer();
-        drawer.draw(p6b.mVertex);
+        drawer.draw(p6B.mVertex);
 
     }
 }
