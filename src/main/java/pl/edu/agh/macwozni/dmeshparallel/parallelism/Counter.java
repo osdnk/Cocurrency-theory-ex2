@@ -1,4 +1,4 @@
-package pl.edu.agh.macwozni.dmeshparallel;
+package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
 public class Counter {
 

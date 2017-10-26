@@ -1,6 +1,6 @@
 package pl.edu.agh.macwozni.dmeshparallel.production;
 
-import pl.edu.agh.macwozni.dmeshparallel.Counter;
+import pl.edu.agh.macwozni.dmeshparallel.parallelism.Counter;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
 
 public class P4 extends Production {

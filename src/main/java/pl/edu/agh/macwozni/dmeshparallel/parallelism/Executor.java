@@ -1,4 +1,4 @@
-package pl.edu.agh.macwozni.dmeshparallel;
+package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
 import pl.edu.agh.macwozni.dmeshparallel.production.P2;
 import pl.edu.agh.macwozni.dmeshparallel.production.P6;
@@ -8,7 +8,7 @@ import pl.edu.agh.macwozni.dmeshparallel.production.P3;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.GraphDrawer;
 
-class Executor extends Thread {
+public class Executor extends Thread {
 
     @Override
     public synchronized void run() {

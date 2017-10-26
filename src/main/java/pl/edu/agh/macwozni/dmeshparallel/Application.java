@@ -1,5 +1,7 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
+import pl.edu.agh.macwozni.dmeshparallel.parallelism.Executor;
+
 class Application {
 
     public static void main(String args[]) {
