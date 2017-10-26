@@ -1,5 +1,7 @@
 package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pl.edu.agh.macwozni.dmeshparallel.production.P2;
 import pl.edu.agh.macwozni.dmeshparallel.production.P6;
 import pl.edu.agh.macwozni.dmeshparallel.production.P1;
@@ -21,6 +23,12 @@ public class Executor extends Thread {
         P1 p1 = new P1(s, counter);
         p1.start();
 
+        try {
+            p1.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         counter.release();
 
         //p2,p3
@@ -28,6 +36,13 @@ public class Executor extends Thread {
         P3 p3 = new P3(p1.getVertex().getRight(), counter);
         p2.start();
         p3.start();
+
+        try {
+            p2.join();
+            p3.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         counter.release();
 
@@ -40,6 +55,15 @@ public class Executor extends Thread {
         p5B.start();
         p6A.start();
         p6B.start();
+
+        try {
+            p5A.join();
+            p5B.join();
+            p6A.join();
+            p6B.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         counter.release();
 
