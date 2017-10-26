@@ -8,14 +8,14 @@ class GraphDrawer {
 
     void draw(Vertex v) {
         //go left
-        while (v.m_left != null) {
-            v = v.m_left;
+        while (v.mLeft != null) {
+            v = v.mLeft;
         }
         //plot
-        while (v.m_right != null) {
-            System.out.print(v.m_label + "--");
-            v = v.m_right;
+        while (v.mRight != null) {
+            System.out.print(v.mLabel + "--");
+            v = v.mRight;
         }
-        System.out.println(v.m_label);
+        System.out.println(v.mLabel);
     }
 }

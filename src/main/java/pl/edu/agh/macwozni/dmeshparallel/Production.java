@@ -3,9 +3,9 @@ package pl.edu.agh.macwozni.dmeshparallel;
 abstract class Production extends Thread {
 
     Production(Vertex Vert, Counter Count) {
-        m_vertex = Vert;
-        m_counter = Count;
-        m_drawer = new GraphDrawer();
+        mVertex = Vert;
+        mCounter = Count;
+        mDrawer = new GraphDrawer();
     }
 
     //returns first vertex from the left
@@ -13,103 +13,103 @@ abstract class Production extends Thread {
 
     //run the thread
     public void run() {
-        m_counter.inc();
+        mCounter.inc();
         //apply the production
-        m_vertex = apply(m_vertex);
+        mVertex = apply(mVertex);
         //plot the graph
-        m_drawer.draw(m_vertex);
-        m_counter.dec();
+        mDrawer.draw(mVertex);
+        mCounter.dec();
     }
 
     //vertex where the production will be applied
-    Vertex m_vertex;
+    Vertex mVertex;
     //graph drawer
-    GraphDrawer m_drawer;
+    GraphDrawer mDrawer;
     //productions counter
-    Counter m_counter;
+    Counter mCounter;
 }
 
 class P1 extends Production {
 
-    P1(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P1(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex S) {
+    Vertex apply(Vertex s) {
         System.out.println("p1");
-        Vertex T1 = new Vertex(null, null, "T1");
-        Vertex T2 = new Vertex(T1, null, "T1");
-        T1.set_right(T2);
-        return T1;
+        Vertex t1 = new Vertex(null, null, "T1");
+        Vertex t2 = new Vertex(t1, null, "T1");
+        t1.setRight(t2);
+        return t1;
     }
 }
 
 class P2 extends Production {
 
-    P2(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P2(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex T1) {
+    Vertex apply(Vertex t1) {
         System.out.println("p2");
-        Vertex T2 = new Vertex(T1, T1.m_right, "T2");
-        T1.m_right.set_left(T2);
-        T1.set_right(T2);
-        return T1;
+        Vertex t2 = new Vertex(t1, t1.mRight, "T2");
+        t1.mRight.setLeft(t2);
+        t1.setRight(t2);
+        return t1;
     }
 }
 
 class P3 extends Production {
 
-    P3(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P3(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex T1) {
+    Vertex apply(Vertex t1) {
         System.out.println("p3");
-        Vertex T2 = new Vertex(T1.m_left, T1, "T2");
-        T1.m_left.set_right(T2);
-        T1.set_left(T2);
-        return T2;
+        Vertex t2 = new Vertex(t1.mLeft, t1, "T2");
+        t1.mLeft.setRight(t2);
+        t1.setLeft(t2);
+        return t2;
     }
 }
 
 class P4 extends Production {
 
-    P4(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P4(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex T2) {
+    Vertex apply(Vertex t2) {
         System.out.println("p4");
-        Vertex T2prim = new Vertex(T2, null, "T2");
-        T2.set_right(T2prim);
-        return T2;
+        Vertex t2Prim = new Vertex(t2, null, "T2");
+        t2.setRight(t2Prim);
+        return t2;
     }
 }
 
 class P5 extends Production {
 
-    P5(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P5(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex T1) {
+    Vertex apply(Vertex t1) {
         System.out.println("p5");
-        T1.set_label("Iel1");
-        return T1;
+        t1.setLabel("Iel1");
+        return t1;
     }
 }
 
 class P6 extends Production {
 
-    P6(Vertex Vert, Counter Count) {
-        super(Vert, Count);
+    P6(Vertex vert, Counter count) {
+        super(vert, count);
     }
 
-    Vertex apply(Vertex T2) {
+    Vertex apply(Vertex t2) {
         System.out.println("p6");
-        T2.set_label("Iel2");
-        return T2;
+        t2.setLabel("Iel2");
+        return t2;
     }
 }

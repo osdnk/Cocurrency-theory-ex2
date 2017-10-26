@@ -3,33 +3,33 @@ package pl.edu.agh.macwozni.dmeshparallel;
 class Vertex {
     //constructor
 
-    Vertex(Vertex Left, Vertex Right, String Lab) {
-        this.m_left = Left;
-        this.m_right = Right;
-        this.m_label = Lab;
+    Vertex(Vertex left, Vertex right, String lab) {
+        this.mLeft = left;
+        this.mRight = right;
+        this.mLabel = lab;
     }
     //empty constructor
 
     Vertex() {
-        this.m_left = null;
-        this.m_right = null;
+        this.mLeft = null;
+        this.mRight = null;
     }
     //label
-    String m_label;
+    String mLabel;
     //links to adjacent elements
-    Vertex m_left;
-    Vertex m_right;
+    Vertex mLeft;
+    Vertex mRight;
     //methods for adding links
 
-    void set_left(Vertex Left) {
-        m_left = Left;
+    void setLeft(Vertex left) {
+        mLeft = left;
     }
 
-    void set_right(Vertex Right) {
-        m_right = Right;
+    void setRight(Vertex right) {
+        mRight = right;
     }
 
-    void set_label(String Lab) {
-        m_label = Lab;
+    void setLabel(String lab) {
+        mLabel = lab;
     }
 }
