@@ -23,13 +23,13 @@ public class Executor extends Thread {
         P1 p1 = new P1(s, counter);
         p1.start();
 
+        counter.release();
+
         try {
             p1.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        counter.release();
 
         //p2,p3
         P2 p2 = new P2(p1.getVertex(), counter);
@@ -37,14 +37,14 @@ public class Executor extends Thread {
         p2.start();
         p3.start();
 
+        counter.release();
+
         try {
             p2.join();
             p3.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        counter.release();
 
         //p5^2,p6^2
         P5 p5A = new P5(p2.getVertex(), counter);
@@ -56,6 +56,8 @@ public class Executor extends Thread {
         p6A.start();
         p6B.start();
 
+        counter.release();
+
         try {
             p5A.join();
             p5B.join();
@@ -64,8 +66,6 @@ public class Executor extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        counter.release();
 
         //done
         System.out.println("done");
