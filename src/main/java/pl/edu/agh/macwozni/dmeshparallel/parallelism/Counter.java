@@ -1,5 +1,8 @@
 package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Counter {
 
     int mCounter;
@@ -31,8 +34,8 @@ public class Counter {
             System.out.println("Counter:wait");
             wait();
             System.out.println("Counter:release");
-        } catch (InterruptedException e) {
-            System.out.println("Counter:InterruptedException caught");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Counter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
