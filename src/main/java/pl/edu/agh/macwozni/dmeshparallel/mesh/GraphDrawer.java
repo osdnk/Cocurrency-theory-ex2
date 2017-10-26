@@ -1,4 +1,4 @@
-package pl.edu.agh.macwozni.dmeshparallel.Mesh;
+package pl.edu.agh.macwozni.dmeshparallel.mesh;
 
 public class GraphDrawer {
 
