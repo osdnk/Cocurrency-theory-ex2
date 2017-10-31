@@ -16,6 +16,11 @@ public abstract class AbstractProduction<P> implements IProduction<P> {
         this.drawer = _drawer;
     }
 
+    @Override
+    public P getObj(){
+        return this.obj;
+    }
+    
 //run the thread
     @Override
     public void start() {

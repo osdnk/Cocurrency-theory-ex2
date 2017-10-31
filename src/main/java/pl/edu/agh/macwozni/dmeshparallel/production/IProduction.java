@@ -10,4 +10,6 @@ public interface IProduction<P> {
     public void start();
     
     public void injectRefs(Object _lock);
+    
+    public P getObj();
 }
