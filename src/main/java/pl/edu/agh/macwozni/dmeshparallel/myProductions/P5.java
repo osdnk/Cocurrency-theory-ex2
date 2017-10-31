@@ -6,7 +6,7 @@ import pl.edu.agh.macwozni.dmeshparallel.production.PDrawer;
 
 public class P5 extends AbstractProduction<Vertex> {
 
-    public P5(Vertex _obj, PDrawer<Vertex> _drawer){
+    public P5(Vertex _obj, PDrawer<Vertex> _drawer) {
         super(_obj, _drawer);
     }
 

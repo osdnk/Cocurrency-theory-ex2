@@ -1,8 +1,6 @@
 package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
 import pl.edu.agh.macwozni.dmeshparallel.production.IProduction;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class ConcurentBlockRunner extends AbstractBlockRunner {
 

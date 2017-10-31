@@ -1,6 +1,5 @@
 package pl.edu.agh.macwozni.dmeshparallel.production;
 
-import java.util.concurrent.locks.Lock;
 import pl.edu.agh.macwozni.dmeshparallel.parallelism.MyLock;
 
 public abstract class AbstractProduction<P> implements IProduction<P> {

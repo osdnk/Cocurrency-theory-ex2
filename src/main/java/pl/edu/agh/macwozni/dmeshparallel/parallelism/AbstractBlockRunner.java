@@ -15,13 +15,13 @@ public abstract class AbstractBlockRunner implements BlockRunner {
     @Override
     public void startAll() {
         Iterator<IProduction> iter = list.iterator();
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             IProduction p = iter.next();
             runOne(p);
         }
         wakeAll();
         iter = list.iterator();
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             try {
                 IProduction p = iter.next();
                 p.join();
@@ -40,7 +40,7 @@ public abstract class AbstractBlockRunner implements BlockRunner {
 
     //starts one thread
     abstract void runOne(IProduction _pOne);
-    
+
     //wakes all threads
     abstract void wakeAll();
 }

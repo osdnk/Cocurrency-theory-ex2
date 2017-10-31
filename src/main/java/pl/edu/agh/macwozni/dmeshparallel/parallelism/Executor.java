@@ -26,7 +26,6 @@ public class Executor extends Thread {
         //start threads
         runner.startAll();
 
-
         //p2,p3
         P2 p2 = new P2(p1.getObj(), drawer);
         P3 p3 = new P3(p1.getObj().getRight(), drawer);
