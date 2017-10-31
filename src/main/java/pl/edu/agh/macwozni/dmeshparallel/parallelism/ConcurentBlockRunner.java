@@ -1,11 +1,13 @@
 package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
 import pl.edu.agh.macwozni.dmeshparallel.production.IProduction;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class ConcurentBlockRunner extends AbstractBlockRunner{
+public class ConcurentBlockRunner extends AbstractBlockRunner {
 
-    private final Object lock = new Object();
-    
+    private final MyLock lock = new MyLock();
+
     @Override
     void runOne(IProduction _pOne) {
         _pOne.injectRefs(lock);
@@ -14,9 +16,7 @@ public class ConcurentBlockRunner extends AbstractBlockRunner{
 
     @Override
     void wakeAll() {
-        synchronized (lock) {
-            lock.notifyAll();
-        }
+        lock.unlock();
     }
 
 }

@@ -1,5 +1,7 @@
 package pl.edu.agh.macwozni.dmeshparallel.production;
 
+import pl.edu.agh.macwozni.dmeshparallel.parallelism.MyLock;
+
 
 public interface IProduction<P> {
     
@@ -9,7 +11,7 @@ public interface IProduction<P> {
     
     public void start();
     
-    public void injectRefs(Object _lock);
+    public void injectRefs(MyLock _lock);
     
     public P getObj();
 }
