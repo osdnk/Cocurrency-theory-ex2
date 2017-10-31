@@ -17,7 +17,7 @@ public abstract class AbstractProduction<P> implements IProduction<P> {
 
     @Override
     public P getObj() {
-        return this.obj;
+        return this.result;
     }
 
 //run the thread
