@@ -2,11 +2,11 @@ package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P2;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P6;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P1;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P5;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P3;
+import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P2;
+import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P6;
+import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P1;
+import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P5;
+import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P3;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.GraphDrawer;
 

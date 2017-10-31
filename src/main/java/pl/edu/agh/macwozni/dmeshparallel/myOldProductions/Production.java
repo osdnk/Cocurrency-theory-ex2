@@ -1,4 +1,4 @@
-package pl.edu.agh.macwozni.dmeshparallel.myProductions;
+package pl.edu.agh.macwozni.dmeshparallel.myOldProductions;
 
 import pl.edu.agh.macwozni.dmeshparallel.parallelism.Counter;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
