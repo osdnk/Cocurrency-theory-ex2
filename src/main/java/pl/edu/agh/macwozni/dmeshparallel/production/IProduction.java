@@ -7,8 +7,6 @@ public interface IProduction<P> {
     
     public void join() throws InterruptedException;
     
-    public void run();
-    
     public void start();
     
     public void injectRefs(Object _lock);
