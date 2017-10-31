@@ -12,7 +12,7 @@ import pl.edu.agh.macwozni.dmeshparallel.production.PDrawer;
 
 public class Executor extends Thread {
     
-    private BlockRunner runner;
+    private final BlockRunner runner;
     
     public Executor(BlockRunner _runner){
         this.runner = _runner;
