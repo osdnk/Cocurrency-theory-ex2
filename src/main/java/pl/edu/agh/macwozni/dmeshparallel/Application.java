@@ -1,12 +1,12 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
-import pl.edu.agh.macwozni.dmeshparallel.parallelism.Executor;
+import pl.edu.agh.macwozni.dmeshparallel.parallelism.OldExecutor;
 
 class Application {
 
     public static void main(String args[]) {
 
-        Executor e = new Executor();
+        OldExecutor e = new OldExecutor();
         e.start();
     }
 }

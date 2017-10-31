@@ -10,7 +10,7 @@ import pl.edu.agh.macwozni.dmeshparallel.myOldProductions.P3;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.GraphDrawer;
 
-public class Executor extends Thread {
+public class OldExecutor extends Thread {
 
     @Override
     public synchronized void run() {
@@ -30,7 +30,7 @@ public class Executor extends Thread {
         try {
             p1.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OldExecutor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //p2,p3
@@ -47,7 +47,7 @@ public class Executor extends Thread {
             p2.join();
             p3.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OldExecutor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //p5^2,p6^2
@@ -70,7 +70,7 @@ public class Executor extends Thread {
             p6A.join();
             p6B.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Executor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OldExecutor.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //done
