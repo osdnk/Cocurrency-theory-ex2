@@ -3,18 +3,18 @@ package pl.edu.agh.macwozni.dmeshparallel.parallelism;
 import java.util.AbstractQueue;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import pl.edu.agh.macwozni.dmeshparallel.production.P;
+import pl.edu.agh.macwozni.dmeshparallel.production.IProduction;
 
 public abstract class AbstractBlockRunner implements BlockRunner {
 
-    private final AbstractQueue<P> list = new ConcurrentLinkedQueue<P>();
+    private final AbstractQueue<IProduction> list = new ConcurrentLinkedQueue<IProduction>();
 
     //starts all threads
     @Override
     public void startAll() {
-        Iterator<P> iter = list.iterator();
+        Iterator<IProduction> iter = list.iterator();
         while (iter.hasNext()){
-            P p = iter.next();
+            IProduction p = iter.next();
             runOne(p);
         }
         wakeAll();
@@ -23,12 +23,12 @@ public abstract class AbstractBlockRunner implements BlockRunner {
 
     //adds a thread to poll
     @Override
-    public void addThread(P pThread) {
+    public void addThread(IProduction pThread) {
         list.add(pThread);
     }
 
     //starts one thread
-    abstract void runOne(P pOne);
+    abstract void runOne(IProduction pOne);
     
     //wakes all threads
     abstract void wakeAll();

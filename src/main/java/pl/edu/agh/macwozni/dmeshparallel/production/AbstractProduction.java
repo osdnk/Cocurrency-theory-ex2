@@ -1,6 +1,6 @@
 package pl.edu.agh.macwozni.dmeshparallel.production;
 
 
-public interface P {
+public class AbstractProduction implements IProduction {
     
 }
