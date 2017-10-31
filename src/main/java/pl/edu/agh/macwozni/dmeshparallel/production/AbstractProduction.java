@@ -9,9 +9,11 @@ public abstract class AbstractProduction<P> implements IProduction<P> {
     private final PThread thread = new PThread();
     private final P obj;
     private P result;
+    private final PDrawer<P> drawer;
     
-    public AbstractProduction(P _obj){
+    public AbstractProduction(P _obj, PDrawer<P> _drawer){
         this.obj = _obj;
+        this.drawer = _drawer;
     }
     
     //run the thread
@@ -39,7 +41,7 @@ public abstract class AbstractProduction<P> implements IProduction<P> {
                 try {
                     lock.wait();
                     result = apply(obj);
-                    // TODO draw
+                    drawer.draw(result);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(AbstractProduction.class.getName()).log(Level.SEVERE, null, ex);
                 }
