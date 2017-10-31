@@ -21,6 +21,12 @@ public abstract class AbstractProduction<P> implements IProduction<P> {
     public void run() {
         thread.run();
     }
+
+//run the thread
+    @Override
+    public void start() {
+        thread.start();
+    }
     
     @Override
     public void join() throws InterruptedException{
