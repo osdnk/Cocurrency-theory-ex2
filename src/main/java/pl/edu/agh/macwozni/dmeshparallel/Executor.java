@@ -1,62 +1,81 @@
 package pl.edu.agh.macwozni.dmeshparallel;
 
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P2;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P6;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P1;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P5;
-import pl.edu.agh.macwozni.dmeshparallel.myProductions.P3;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.Vertex;
 import pl.edu.agh.macwozni.dmeshparallel.mesh.GraphDrawer;
 import pl.edu.agh.macwozni.dmeshparallel.parallelism.BlockRunner;
+import pl.edu.agh.macwozni.dmeshparallel.production.AbstractProduction;
 import pl.edu.agh.macwozni.dmeshparallel.production.PDrawer;
+
 
 public class Executor extends Thread {
     
     private final BlockRunner runner;
     
-    public Executor(BlockRunner _runner){
+    Executor(BlockRunner _runner){
         this.runner = _runner;
+    }
+
+    public static final class PE extends AbstractProduction<Vertex> {
+        Vertex[][] mRes;
+        PE(Vertex _obj, PDrawer<Vertex> _drawer, Vertex[][] res) {
+            super(_obj, _drawer);
+            this.mRes = res;
+        }
+
+        @Override
+        public Vertex apply(Vertex s) {
+            Vertex t1 = new Vertex(s.x + 1 , s.y);
+            mRes[t1.y][t1.x] = t1;
+            return t1;
+        }
+    }
+
+    public static final class PS extends AbstractProduction<Vertex> {
+        Vertex[][] mRes;
+        PS(Vertex _obj, PDrawer<Vertex> _drawer, Vertex[][] res) {
+            super(_obj, _drawer);
+            this.mRes = res;
+        }
+
+        @Override
+        public Vertex apply(Vertex s) {
+            Vertex t1 = new Vertex(s.x , s.y + 1);
+            mRes[t1.y][t1.x] = t1;
+            return t1;
+        }
     }
 
     @Override
     public void run() {
-
         PDrawer drawer = new GraphDrawer();
-        //axiom
-        Vertex s = new Vertex(null, null, "S");
+        Vertex s = new Vertex(0,0);
+        int N = 104;
+        Vertex[][] res = new Vertex[N][N];
+        res[0][0] = s;
+        for (int n = 1; n <=2 * N - 2; n++) {
+            for (int i = 0; i <= N - 1; i++) {
+                int j = n - 1 - i;
+                if (j >= 0 && j < N  - 1) {
+                    Vertex v = res[i][j];
+                    PE p = new PE(v, drawer, res);
+                    this.runner.addThread(p);
+                }
+            }
+            if (n <= N - 1) {
+                Vertex v = res[n-1][0];
+                PS p = new PS(v, drawer, res);
+                this.runner.addThread(p);
+            }
+            this.runner.startAll();
+        }
 
-        //p1 
-        P1 p1 = new P1(s, drawer);
-        this.runner.addThread(p1);
-
-        //start threads
-        this.runner.startAll();
-
-        //p2,p3
-        P2 p2 = new P2(p1.getObj(), drawer);
-        P3 p3 = new P3(p1.getObj().getRight(), drawer);
-        this.runner.addThread(p2);
-        this.runner.addThread(p3);
-
-        //start threads
-        this.runner.startAll();
-
-        //p5^2,p6^2
-        P5 p5A = new P5(p2.getObj(), drawer);
-        P5 p5B = new P5(p3.getObj().getRight(), drawer);
-        P6 p6A = new P6(p2.getObj().getRight(), drawer);
-        P6 p6B = new P6(p3.getObj(), drawer);
-        this.runner.addThread(p5A);
-        this.runner.addThread(p5B);
-        this.runner.addThread(p6A);
-        this.runner.addThread(p6B);
-
-        //start threads
-        this.runner.startAll();
-
-        //done
-        System.out.println("done");
-        drawer.draw(p6B.getObj());
-
+        for (int i = 0; i< N; i ++) {
+            for (int j = 0; j< N; j ++) {
+                if (res[i][j] == null) {
+                    // if any of block is null our algorithm is incorrect
+                    System.out.println("XXXXXXX");
+                }
+            }
+        }
     }
 }
